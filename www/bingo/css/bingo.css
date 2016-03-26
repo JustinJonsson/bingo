@@ -1,3 +1,42 @@
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.container-fluid, .col-xs-12, .row {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 h1 {
-    color: orange;
+  color: white;
+}
+
+#header{
+  border-bottom-color: rgb(193,135,203);
+  border-bottom-width: 10px;
+  border-bottom-style: solid;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(91, 103, 112);
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table, td, th {
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+}
+
+td, th{
+  width: 100px;
+}
+
+tr {
+  height:100px;
 }
