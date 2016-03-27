@@ -3,9 +3,11 @@ body {
   text-align: center;
 }
 
-.container-fluid, .col-xs-12, .row {
-  padding-left: 0px;
-  padding-right: 0px;
+.container-fluid{
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .row {
@@ -17,12 +19,19 @@ h1 {
   color: white;
 }
 
+.animated {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+}
+
 #header{
   border-bottom-color: rgb(193,135,203);
   border-bottom-width: 10px;
   border-bottom-style: solid;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   background-color: rgb(91, 103, 112);
 }
 
