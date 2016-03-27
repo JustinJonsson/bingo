@@ -31,6 +31,10 @@ table {
   margin-right: auto;
 }
 
+thead {
+  border-bottom: 3px solid;
+  background-color: lightgrey;
+}
 table, td, th {
   border: 1px solid black;
   text-align: center;
