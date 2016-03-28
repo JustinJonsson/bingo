@@ -18,22 +18,34 @@ $(document).ready(function(){
     "global",
     "pipeline",
     "differentiation",
-    "challenging market conditions"
+    "challenging market conditions",
+    "fragmentation",
+    "a", "b", "c", "d", "e", "f", "g", "h"
   ];
 
-  function createBoard(seed){
+  function writeBoard(){
     var boardSize = 24;
-    // here we can take an empty array, and until its size  = boardSize, add new elements from buzzwords, while
-    // deleting them from buzzwords. That way we prevent duplicates.
+    var chosenWords = [];
+    var removed = "";
+    var i = 0;
 
+    while ( chosenWords.length <= boardSize ) {
+      i = Math.floor(Math.random() * (buzzwords.length + 1));
+      removed = buzzwords.splice(i,1)[0];
+      chosenWords.push(removed);
+    }
+    //console.log(chosenWords, chosenWords.length);
 
+    chosenWords.forEach(function(val, i, arr){
+      console.log(i, val);
+    });
   }
 
+  // programmatically register click events on all 24 (or 25) tds, rather than individually!
 
   $("#loginform").submit(function(e){
-    var seed = $("#emailform").val();
-    console.log(seed);
-    createBoard(seed);
+    var emailAddress = $("#emailform").val();
+    writeBoard();
     $("#loginrow").addClass("animated slideOutLeft").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
       $("#loginrow").hide();
       $("#boardrow").show().addClass("animated slideInRight");
