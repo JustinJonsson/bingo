@@ -28,9 +28,7 @@ h1 {
 }
 
 #header{
-  border-bottom-color: rgb(193,135,203);
-  border-bottom-width: 10px;
-  border-bottom-style: solid;
+  border-bottom: rgb(193,135,203) 10px solid;
   padding: 0;
   margin: 0;
   background-color: rgb(91, 103, 112);
@@ -53,9 +51,10 @@ table, td, th {
 }
 
 td, th{
-  width: 100px;
+  width: 120px;
+  padding: 5px;
 }
 
 tr {
-  height:100px;
+  height:120px;
 }
