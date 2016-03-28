@@ -24,25 +24,20 @@ $(document).ready(function(){
   ];
 
   function writeBoard(){
-    var boardSize = (5*5)-1;
-    var chosenWords = [];
+    var boardSize = 24;
     var removed = "";
     var r = 0;
-
-    for ( var i = 0; i <= boardSize; i++ ) {
-      r = Math.floor(Math.random() * (buzzwords.length));
-      removed = buzzwords.splice(r,1)[0];
-      chosenWords.push(removed);
-    }
 
     var tds = $("tbody").find("td");
     var $tds = $(tds);
     $tds.each(function(i, el){
       if(i!==12) {
+        r = Math.floor(Math.random() * (buzzwords.length));
+        removed = buzzwords.splice(r,1)[0];
         var $el = $(el);
         $el.attr("data-index", i);
-        $el.attr("data-word", chosenWords[i]);
-        $el.text(chosenWords[i]);
+        $el.attr("data-word", removed);
+        $el.text(removed);
       }
     });
   }
