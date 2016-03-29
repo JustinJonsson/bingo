@@ -23,26 +23,33 @@ $(document).ready(function(){
     "keep this brief", "b", "c", "d", "e", "f", "g", "h"
   ];
 
+  function checkWin(){
+
+  }
+
+  function clicker(){
+    $(this).addClass("chosen");
+    checkWin();
+  }
+
+  // put the values on the board
   function writeBoard(){
-    var boardSize = 24;
     var removed = "";
     var r = 0;
 
     var tds = $("tbody").find("td");
-    var $tds = $(tds);
-    $tds.each(function(i, el){
+    //var $tds = $(tds);
+    tds.each(function(i, el){
       if(i!==12) {
         r = Math.floor(Math.random() * (buzzwords.length));
         removed = buzzwords.splice(r,1)[0];
-        var $el = $(el);
-        $el.attr("data-index", i);
-        $el.attr("data-word", removed);
-        $el.text(removed);
+        $(el).attr("data-index", i);
+        $(el).attr("data-word", removed);
+        $(el).text(removed);
+        $(el).click(clicker);
       }
     });
   }
-
-  // programmatically register click events on all 24 (or 25) tds, rather than individually!
 
   $("#loginform").submit(function(e){
     var emailAddress = $("#emailform").val();
