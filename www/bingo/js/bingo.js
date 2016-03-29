@@ -20,7 +20,7 @@ $(document).ready(function(){
     "differentiation",
     "challenging market conditions",
     "fragmentation",
-    "a", "b", "c", "d", "e", "f", "g", "h"
+    "keep this brief", "b", "c", "d", "e", "f", "g", "h"
   ];
 
   function writeBoard(){
