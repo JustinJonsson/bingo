@@ -26,12 +26,11 @@ $(document).ready(function(){
 
   function checkWin(){
     var map = [];
-    var cells = $("tbody").find(".chosen");
-    cells.each(function(i, el){
-      console.log($(cells[i]).attr("data-index"));
+    var $cells = $("tbody").find(".chosen");
+    $cells.each(function(i, el){
+      map.push($(el).attr("data-index"));
     });
-
-    // put the indices into an array.
+    console.log(map);
     // do magic w/ the indices
   }
 
@@ -44,18 +43,18 @@ $(document).ready(function(){
     var removed = "";
     var r = 0;
 
-    var tds = $("tbody").find("td");
-    tds.each(function(i, el){
-      if(i!==12) {
+    var $tds = $("tbody").find("td");
+    $tds.each(function(i, el){
+      if(i!==12) { // if not the FREE square
         r = Math.floor(Math.random() * (buzzwords.length));
         removed = buzzwords.splice(r,1)[0];
-        $(el).attr("data-index", i);
         $(el).attr("data-word", removed);
         $(el).text(removed);
         $(el).click(clicker);
-      } else {
+      } else { // if the FREE square
         $(el).addClass("chosen");
-      }
+      } // finally, for all squares.
+      $(el).attr("data-index", i);
     });
   }
 
