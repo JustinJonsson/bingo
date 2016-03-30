@@ -20,25 +20,31 @@ $(document).ready(function(){
     "differentiation",
     "challenging market conditions",
     "fragmentation",
-    "keep this brief", "b", "c", "d", "e", "f", "g", "h"
+    "keep this brief",
+    "ownership", "c", "d", "e", "f", "g", "h"
   ];
 
   function checkWin(){
+    var map = [];
+    var cells = $("tbody").find(".chosen");
+    cells.each(function(i, el){
+      console.log($(cells[i]).attr("data-index"));
+    });
 
+    // put the indices into an array.
+    // do magic w/ the indices
   }
 
   function clicker(){
-    $(this).addClass("chosen");
+    $(this).toggleClass("chosen");
     checkWin();
   }
 
-  // put the values on the board
   function writeBoard(){
     var removed = "";
     var r = 0;
 
     var tds = $("tbody").find("td");
-    //var $tds = $(tds);
     tds.each(function(i, el){
       if(i!==12) {
         r = Math.floor(Math.random() * (buzzwords.length));

@@ -32,18 +32,9 @@ h1 {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  color: lightgrey;
-  text-shadow: 2px 2px black;
-  font-weight:bold;
-}
-
-.chosen img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: auto;
-  opacity: 0.4;
+  jcolor: lightgrey;
+  jtext-shadow: 2px 2px black;
+  font-weight:bolder;
 }
 
 #header{
@@ -67,6 +58,10 @@ table, td, th {
   border: 1px solid black;
   text-align: center;
   font-size: larger;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 td, th{
