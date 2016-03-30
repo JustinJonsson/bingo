@@ -53,6 +53,8 @@ $(document).ready(function(){
         $(el).attr("data-word", removed);
         $(el).text(removed);
         $(el).click(clicker);
+      } else {
+        $(el).addClass("chosen");
       }
     });
   }
