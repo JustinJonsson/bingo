@@ -24,6 +24,11 @@ $(document).ready(function(){
     "ownership", "c", "d", "e", "f", "g", "h"
   ];
 
+  var row = [];
+  var col = [];
+  var ltr = [];
+  var rtl = [];
+
   function checkWin(){
     var map = [];
     var $cells = $("tbody").find(".chosen");
@@ -31,11 +36,20 @@ $(document).ready(function(){
       map.push($(el).attr("data-index"));
     });
     console.log(map);
-    // do magic w/ the indices
+    // do magic w/ the indices.
+    // Or maybe I don't compute this every time. INSTEAD, maybe what I do is enhance clicker to:
+    // - Every time someone selects (or deselects) a cell, update the total for
+    //   - the row, which is floor(cellnum/5)
+    //   - the column, which is cellnum%5
+    //   - the diagonal, of which there are two, and which can be identified as Left to Right and RtL
+    //     - determine which diagonal with row & column.
+    //       - if rownum = colnum, you're on the LtR diagonal (0,0 / 1,1 / 2,2 / 3,3 / 4,4)
+    //       - if rownum + colnum = 4, you're on the RtL diagonal (0,4 / 1,3 / 2,2 / 3,1 / 4,0)
   }
 
   function clicker(){
     $(this).toggleClass("chosen");
+    //updateLines($(this).attr("data-index"));
     checkWin();
   }
 
