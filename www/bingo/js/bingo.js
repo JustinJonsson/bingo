@@ -24,6 +24,8 @@ $(document).ready(function(){
     "ownership", "c", "d", "e", "f", "g", "h"
   ];
 
+  var emailAddress = "";
+
   var row = new Array(5).fill(0);
   var col = new Array(5).fill(0);
   var ltr = 0;
@@ -115,7 +117,7 @@ $(document).ready(function(){
   }
 
   $("#loginform").submit(function(e){
-    var emailAddress = $("#emailform").val();
+    emailAddress = $("#emailform").val();
     writeBoard();
     $("#loginrow").addClass("animated slideOutLeft").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
       $("#loginrow").hide();
