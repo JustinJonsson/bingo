@@ -55,7 +55,7 @@ $(document).ready(function(){
 
   function checkWin(){
     if (ltr === 5) {
-      illuminate("ltr);
+      illuminate("ltr");
     }
     if (rtl === 5) {
       illuminate("rtl");
