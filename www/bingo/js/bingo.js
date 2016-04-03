@@ -26,10 +26,10 @@ $(document).ready(function(){
 
   var row = new Array(5).fill(0);
   var col = new Array(5).fill(0);
-  var ltr;
-  var rtl;
+  var ltr = 0;
+  var rtl = 0;
 
-  function updateLines(cell, addOrSub){
+  function updateLines(cell, add){
     // - Every time someone selects (or deselects) a cell, update the total for
     //   - the row, which is floor(cellnum/5)
     //   - the column, which is cellnum%5
@@ -42,42 +42,55 @@ $(document).ready(function(){
     var colnum = cell % 5;
     var isLtr = (rownum == colnum);
     var isRtl = (rownum + colnum === 4);
-    var increment = (addOrSub >= 0 ? 1 : -1);
+    var increment = (add ? 1 : -1);
 
-    console.log(cell, addOrSub, increment);
     row[rownum] += increment;
     col[colnum] += increment;
     ltr += isLtr ? increment : 0;
     rtl += isRtl ? increment : 0;
 
-    console.log("rownum", rownum, "colnum", colnum, "rowtotal", row[rownum], "coltotal", col[colnum]);
+    console.log(rownum, colnum, row[rownum], col[colnum]);
+    console.log(ltr, rtl);
+  }
+  
+  function highlight(line){
+    
   }
 
+  function removeListeners(){
+    var $tds = $("tbody").find("td");
+    $tds.each(function(i, el){
+      $(el).off("click");
+    })
+  }
+
+  function win(winMethod){
+    removeListeners();
+    //winFireworks();
+    //highlight(winMethod);
+    $("table").addClass("blink");
+  }
+  
   function checkWin(){
     if (ltr === 5) {
-      illuminate("ltr");
+      win("ltr");
     }
     if (rtl === 5) {
-      illuminate("rtl");
+      win("rtl");
     }
     for (var i = 0; i < 5; i++){
       if (row[i] === 5) {
-        illuminate(row[i]);
+        win(row[i]);
     }
       if (col[i] === 5) {
-        illuminate(row[i]);
+        win(row[i]);
       }
     }
-
   }
 
   function clicker(){
     $(this).toggleClass("chosen");
-    if ($(this).hasClass("chosen")) {
-      updateLines($(this).attr("data-index"), 1);
-    } else {
-      updateLines($(this).attr("data-index"), -1);
-    }
+    updateLines($(this).attr("data-index"), $(this).hasClass("chosen"));
     checkWin();
   }
 

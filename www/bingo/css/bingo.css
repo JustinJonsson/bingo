@@ -32,9 +32,24 @@ h1 {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  jcolor: lightgrey;
-  jtext-shadow: 2px 2px black;
   font-weight:bolder;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1s;
+  animation-iteration-count: infinite;
 }
 
 #header{
