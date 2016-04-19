@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+  var eventName = "";
+  var email = "";
+
   var buzzwords = [
     "paradigm",
     "headwinds",
@@ -52,10 +55,6 @@ $(document).ready(function(){
     console.log(rownum, colnum, row[rownum], col[colnum]);
     console.log(ltr, rtl);
   }
-  
-  function highlight(line){
-    
-  }
 
   function removeListeners(){
     var $tds = $("tbody").find("td");
@@ -69,6 +68,7 @@ $(document).ready(function(){
     //winFireworks();
     //highlight(winMethod);
     $("table").addClass("blink");
+    registerWin(email, eventName);
   }
   
   function checkWin(){
@@ -83,7 +83,7 @@ $(document).ready(function(){
         win(row[i]);
     }
       if (col[i] === 5) {
-        win(row[i]);
+        win(col[i]);
       }
     }
   }
@@ -114,20 +114,44 @@ $(document).ready(function(){
     });
   }
 
-  $("#loginform").submit(function(e){
-    var eventName = $("#eventInput").val();
-    writeBoard();
-    $("#loginrow").addClass("animated slideOutLeft").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
-      $("#loginrow").hide();
-      $("#boardrow").show().addClass("animated slideInRight");
+  function registerUser(){
+    var toSend = {Email:email,Event:eventName};
+    console.log(toSend);
+    toSend = JSON.stringify(toSend);
+    console.log(toSend);
+    $.ajax(
+      {
+        url:'http://corvidian.com:3000',
+        type:'POST',
+        data:toSend,
+        contentType: "application/json",
+        success:[writeBoard(), animDiv('#loginrow', '#boardrow')]
+      }
+    );
+  }
+
+  function registerWin(){
+
+  }
+
+  function animDiv(outDiv, inDiv){
+    $(outDiv).addClass("animated slideOutLeft").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+      $(outDiv).hide();
+      $(inDiv).show().addClass("animated slideInRight");
     });
+  }
+
+  $("#loginform").submit(function(e){
     e.preventDefault(); // to prevent page refresh
+    eventName = $("#eventInput").val();
+    email = $("#emailInput").val();
+    registerUser();
   });
 
   function init(){
     $("#loginrow").show();
     $("#boardrow").hide();
-    $("#eventInput").focus().select();
+    $("#emailInput").focus().select();
   }
 
   init();
