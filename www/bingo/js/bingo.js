@@ -68,7 +68,7 @@ $(document).ready(function(){
     //winFireworks();
     //highlight(winMethod);
     $("table").addClass("blink");
-    registerWin(email, eventName);
+    registerWin();
   }
   
   function checkWin(){
@@ -114,8 +114,9 @@ $(document).ready(function(){
     });
   }
 
+  /*
   function registerUser(){
-    var toSend = {Email:email,Event:eventName};
+    var toSend = {Action:'regUser',Email:email,Event:eventName};
     console.log(toSend);
     toSend = JSON.stringify(toSend);
     console.log(toSend);
@@ -129,9 +130,22 @@ $(document).ready(function(){
       }
     );
   }
+  */
 
   function registerWin(){
-
+    var theTime = new Date();
+    var toSend = {Action:'regFinish',Email:email,Event:eventName,Time:theTime};
+    console.log(toSend);
+    toSend = JSON.stringify(toSend);
+    console.log(toSend);
+    $.ajax(
+      {
+        url:'http://corvidian.com:3000',
+        type:'POST',
+        data:toSend,
+        contentType: "application/json"
+      }
+    );
   }
 
   function animDiv(outDiv, inDiv){
@@ -145,7 +159,9 @@ $(document).ready(function(){
     e.preventDefault(); // to prevent page refresh
     eventName = $("#eventInput").val();
     email = $("#emailInput").val();
-    registerUser();
+    //registerUser();
+    writeBoard();
+    animDiv('#loginrow', '#boardrow');
   });
 
   function init(){
