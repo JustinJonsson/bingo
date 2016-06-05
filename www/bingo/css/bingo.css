@@ -53,10 +53,12 @@ h1 {
 }
 
 #header{
-  border-bottom: rgb(193,135,203) 10px solid;
+  /*border-bottom: rgb(193,135,203) 10px solid;*/
+  border-bottom: darkred 10px solid;
   padding: 0;
   margin: 0;
   background-color: rgb(91, 103, 112);
+  background-color: darksalmon;
 }
 
 table {

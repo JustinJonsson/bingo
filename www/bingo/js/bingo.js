@@ -7,7 +7,7 @@ $(document).ready(function(){
     "paradigm",
     "headwinds",
     "reorganization",
-    "LatAm",
+    "bleeding edge",
     "more with less",
     "strategic partnership",
     "trusted partner",
@@ -19,12 +19,20 @@ $(document).ready(function(){
     "uniquely positioned",
     "recession",
     "global",
-    "pipeline",
+    "strengthening pipeline",
     "differentiation",
     "challenging market conditions",
     "fragmentation",
     "keep this brief",
-    "ownership", "c", "d", "e", "f", "g", "h"
+    "ownership",
+    "returning opportunity",
+    "volatility",
+    "value-added",
+    "by the numbers",
+    "consolidation",
+    "turnkey",
+    "world-class",
+    "holistic"
   ];
 
   var row = new Array(5).fill(0);
