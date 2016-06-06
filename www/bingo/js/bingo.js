@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-  var eventName = "";
-  var email = "";
-
   var buzzwords = [
     "paradigm",
     "headwinds",
@@ -76,14 +73,14 @@ $(document).ready(function(){
     //winFireworks();
     //highlight(winMethod);
     $("table").addClass("blink");
-    registerWin();
+    //registerWin();
   }
   
   function checkWin(){
     if (ltr === 5) {
       win("ltr");
     }
-    if (rtl === 5) {
+    else if (rtl === 5) {
       win("rtl");
     }
     for (var i = 0; i < 5; i++){
@@ -100,6 +97,23 @@ $(document).ready(function(){
     $(this).toggleClass("chosen");
     updateLines($(this).attr("data-index"), $(this).hasClass("chosen"));
     checkWin();
+  }
+
+  function getEventName(eventId){
+    var eventName = "";
+
+    var toSend = {Action:'getEventName',Event:eventId};
+    console.log(toSend);
+    toSend = JSON.stringify(toSend);
+    console.log(toSend);
+    $.ajax({
+        url:'http://corvidian.com:3000',
+        type:'POST',
+        data:toSend,
+        contentType: "application/json"
+    }).done(function(data){
+      console.log('Data:', data);
+    });
   }
 
   function writeBoard(){
@@ -165,9 +179,9 @@ $(document).ready(function(){
 
   $("#loginform").submit(function(e){
     e.preventDefault(); // to prevent page refresh
-    eventName = $("#eventInput").val();
+    var eventId = $("#eventInput").val();
     email = $("#emailInput").val();
-    //registerUser();
+    getEventName(eventId);
     writeBoard();
     animDiv('#loginrow', '#boardrow');
   });
