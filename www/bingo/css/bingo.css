@@ -15,7 +15,7 @@ body {
   padding-bottom: 15px;
 }
 
-h1 {
+h1, h3 {
   color: white;
   margin-top: 10px;
 }
@@ -54,10 +54,11 @@ h1 {
 
 #header{
   /*border-bottom: rgb(193,135,203) 10px solid;*/
-  border-bottom: darkred 10px solid;
+  border-bottom: 10px solid;
+  border-bottom-color: darkred;
   padding: 0;
   margin: 0;
-  background-color: rgb(91, 103, 112);
+  /*background-color: rgb(91, 103, 112);*/
   background-color: darksalmon;
 }
 

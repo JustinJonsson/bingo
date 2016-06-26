@@ -29,7 +29,9 @@ $(document).ready(function(){
     "consolidation",
     "turnkey",
     "world-class",
-    "holistic"
+    "holistic",
+    "uptick",
+    "downturn"
   ];
 
   var row = new Array(5).fill(0);
@@ -113,6 +115,9 @@ $(document).ready(function(){
         contentType: "application/json"
     }).done(function(data){
       console.log('Data:', data);
+      $("#header h3").text(data.eventName);
+      $("#header").css("background-color", "rgb("+data.bannerColor+")");
+      $("#header").css("border-bottom-color", "rgb("+data.bottomColor+")");
     });
   }
 
