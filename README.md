@@ -1,2 +1,2 @@
-# corhome
-Main corvidian data
+# bingo
+Bingo web app
